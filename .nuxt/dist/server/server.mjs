@@ -1,0 +1,1 @@
+export { default } from "file:///Applications/XAMPP/xamppfiles/htdocs/AutofenyezesSPA/node_modules/@nuxt/vite-builder/dist/runtime/vite-node.mjs"
