@@ -1,3 +1,66 @@
+<script setup>
+import { ref, onMounted, onBeforeUnmount } from 'vue'
+
+const currentSlide = ref(0)
+const autoPlayInterval = ref(null)
+
+const slides = [
+  {
+    image: '/',
+    alt: 'Fekete fényezett autó',
+    label: 'GALÉRIA',
+    title: 'MUNKÁINK MAGUKÉRT BESZÉLNEK!',
+    buttonText: 'GALÉRIA',
+    // buttonLink: '/galeria',
+  },
+  {
+    image: '/',
+    alt: 'Fényezés alatt álló autó',
+    label: 'REFERENCIÁK',
+    title: 'MINŐSÉGI MUNKA MINDEN ALKALOMMAL',
+    buttonText: 'GALÉRIA',
+    // buttonLink: '/galeria',
+  },
+  {
+    image: '/',
+    alt: 'Piros fényezett autó',
+    label: 'MUNKÁINK',
+    title: 'GYÁRI MINŐSÉG, ELÉGEDETT ÜGYFELEK',
+    buttonText: 'GALÉRIA',
+    // buttonLink: '/galeria',
+  },
+  {
+    image: '/',
+    alt: 'Részletes fényezési munka',
+    label: 'PORTFÓLIÓ',
+    title: 'PRECIZITÁS MINDEN RÉSZLETBEN',
+    buttonText: 'GALÉRIA',
+    // buttonLink: '/galeria',
+  },
+]
+
+const setSlide = (index) => {
+  currentSlide.value = index
+}
+
+const nextSlide = () => {
+  currentSlide.value = (currentSlide.value + 1) % slides.length
+}
+
+onMounted(() => {
+  // Start autoplay
+  autoPlayInterval.value = setInterval(() => {
+    nextSlide()
+  }, 5000)
+})
+
+onBeforeUnmount(() => {
+  // Clear interval when component is destroyed
+  if (autoPlayInterval.value) {
+    clearInterval(autoPlayInterval.value)
+  }
+})
+</script>
 <template>
   <!-- Top contact bar -->
   <div class="contact-bar">
@@ -94,7 +157,6 @@
       </p>
 
       <div class="painting-process__steps">
-
         <div class="painting-process__step">
           <div class="painting-process__step-number">1</div>
           <div class="painting-process__step-content">
@@ -155,6 +217,44 @@
             </p>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+  <section class="work-gallery">
+    <div class="work-gallery__container">
+      <div class="work-gallery__slider">
+        <div
+          v-for="(slide, index) in slides"
+          :key="index"
+          class="work-gallery__slide"
+          :class="{ 'work-gallery__slide--active': currentSlide === index }"
+        >
+          <div class="work-gallery__image-wrapper">
+            <img
+              :src="slide.image"
+              :alt="slide.alt"
+              class="work-gallery__image"
+            />
+            <div class="work-gallery__overlay">
+              <span class="work-gallery__label">{{ slide.label }}</span>
+              <h2 class="work-gallery__title">{{ slide.title }}</h2>
+              <NuxtLink :to="slide.buttonLink" class="work-gallery__button">
+                {{ slide.buttonText }}
+              </NuxtLink>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="work-gallery__nav">
+        <button
+          v-for="(_, index) in slides"
+          :key="index"
+          class="work-gallery__nav-dot"
+          :class="{ 'work-gallery__nav-dot--active': currentSlide === index }"
+          :aria-label="`${index + 1}. kép megjelenítése`"
+          @click="setSlide(index)"
+        ></button>
       </div>
     </div>
   </section>
