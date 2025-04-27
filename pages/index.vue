@@ -93,12 +93,11 @@ onBeforeUnmount(() => {
   <section class="paint-benefits">
     <div class="paint-benefits__container">
       <div class="paint-benefits__media">
-        <img
-          src=""
-          alt="Classic red car with quality paint job"
+        <NuxtImg
+          src="/img/paint-benefits.webp"
+          alt="paint-benefits__image"
           class="paint-benefits__image"
-          width="800"
-          height="600"
+          height="100%"
         />
       </div>
       <div class="paint-benefits__content">
