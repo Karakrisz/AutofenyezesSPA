@@ -4,7 +4,7 @@
 // Variables
 $primary-color: #fff;
 $secondary-color: #155b9b;
-$text-color: #001647;
+$text-color: #fff;
 $white: #fff;
 $black: #000;
 
@@ -191,20 +191,30 @@ ul {
 }
 
 // Header Styles
+header {
+  height: 0;
+}
+
 .header-content {
-  padding: 1em 5em;
+  padding: 3em 5em;
   @include flex-center;
+  background: transparent;
+  z-index: 10;
+  position: relative;
 
   &__logo-box {
-    width: 20%;
+    width: 15%;
     &__link__img {
-      width: 70%;
+      width: 75%;
+      margin-bottom: 2em;
     }
   }
 
   &__nav-box {
-    width: 80%;
-    @include flex-center;
+    width: 40%;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 2em;
   }
 }
 
@@ -212,18 +222,24 @@ ul {
   &__list {
     padding: 0;
     margin: 0;
-    justify-content: end;
+    justify-content: flex-start;
     @include flex-center;
+    flex-wrap: wrap;
   }
 
   &__item {
-    padding-left: 2.5em;
+    padding: 0 1.3em;
+    font-family: 'League Gothic';
+    font-size: 1.3rem;
+    border-right: 3px solid #fff;
+
+    &--no-border {
+      border-right: none;
+    }
   }
 
   &__list__li {
-    &:first-child {
-      border-left: 0.12rem solid $black;
-    }
+    margin-bottom: 1.5em;
     &__img {
       width: 45%;
     }
@@ -237,30 +253,150 @@ ul {
   height: 100% !important;
 }
 
-.hero-container {
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+// Hero section styles
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 700px;
+  background-color: #000;
+  overflow: hidden;
+
+  &__container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+
+    @media (max-width: 992px) {
+      flex-direction: column-reverse;
+    }
+  }
+
   &__content {
-    &__logo {
+    position: relative;
+    width: 60%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 3rem 5rem;
+    z-index: 2;
+
+    @media (max-width: 992px) {
       width: 100%;
-      margin: 7em 0;
+      height: 50%;
+      text-align: center;
+      align-items: center;
+      padding: 3rem 2rem;
     }
-    &__title {
-      font-size: 2rem;
-      margin: 0;
+
+    @media (max-width: 576px) {
+      padding: 2rem;
     }
-    &__button {
-      @include flex-center;
-      background-color: $primary-color;
-      color: $black;
-      padding: 0.5em 1.7em;
-      border-radius: 1.3em;
-      justify-self: center;
-      &__icon {
-        width: 1.5rem;
-        margin-right: 0.7em;
-      }
+  }
+
+  &__title {
+    font-size: 7rem;
+    font-weight: 400;
+    line-height: 1.1;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    font-family: 'League Gothic';
+
+    @media (max-width: 1200px) {
+      font-size: 4rem;
+    }
+
+    @media (max-width: 992px) {
+      font-size: 3.5rem;
+    }
+
+    @media (max-width: 576px) {
+      font-size: 3rem;
+    }
+
+    @media (max-width: 400px) {
+      font-size: 2.5rem;
+    }
+  }
+
+  &__cta {
+    display: flex;
+    margin-top: 2rem;
+    z-index: 10;
+    right: 10%;
+    top: 2em;
+
+    @media (max-width: 992px) {
+      justify-content: center;
+    }
+  }
+
+  &__cta-button {
+    display: inline-block;
+    background-color: #42b1ec;
+    color: #ffffff;
+    padding: 1rem 2.3rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 400;
+    border-radius: 10px;
+    transition: background-color 0.3s;
+    font-size: 2rem;
+    font-family: 'League Gothic', sans-serif;
+
+    &:hover {
+      background-color: #1a95ca; /* Sötétebb kék */
+      transform: translateY(-3px);
+    }
+  }
+
+  &__image-container {
+    position: relative;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+
+    @media (max-width: 992px) {
+      width: 100%;
+      height: 50%;
+    }
+  }
+
+  &__image {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  /* Árnyékolás a képre a jobb szövegolvashatóságért */
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
+    pointer-events: none;
+    z-index: 1;
+
+    @media (max-width: 992px) {
+      width: 100%;
+      height: 30%;
+      top: 50%;
+      background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.7),
+        rgba(0, 0, 0, 0)
+      );
     }
   }
 }
@@ -348,7 +484,7 @@ $transition-speed: 0.3s;
 
 // Paint benefits section styles
 .paint-benefits {
-  padding: $spacing-unit * 3 0;
+  padding: $spacing-unit * 5 0;
 
   &__container {
     margin: 0 13%;
@@ -359,6 +495,10 @@ $transition-speed: 0.3s;
     @media (max-width: 992px) {
       flex-direction: column;
     }
+  }
+
+  &__container--format {
+    align-items: center;
   }
 
   &__media {
@@ -378,6 +518,13 @@ $transition-speed: 0.3s;
     border-radius: 25px;
   }
 
+  &__image--format {
+    height: 100vh;
+    width: 80%;
+    float: right;
+    margin-top: -4%;
+  }
+
   &__content {
     flex: 1;
     min-width: 300px;
@@ -386,6 +533,10 @@ $transition-speed: 0.3s;
     @media (max-width: 992px) {
       order: 2;
     }
+  }
+
+  &__content--format {
+    margin-top: 7em;
   }
 
   &__title {
@@ -449,7 +600,8 @@ $transition-speed: 0.3s;
     border-radius: $border-radius;
     transition: background-color $transition-speed;
     font-size: 2rem;
-    font-family: "League Gothic", sans-serif;
+    font-family: 'League Gothic', sans-serif;
+    margin-bottom: 2em;
 
     &:hover {
       background-color: color.adjust($primary-color-paint, $lightness: -10%);
@@ -461,19 +613,18 @@ $transition-speed: 0.3s;
 
 // Sales Container Styles
 .painting-process {
-  padding: $spacing-unit * 4 0;
+  padding: $spacing-unit * 7 0 0 0;
   background-color: #f9f9f9;
 
   &__container {
-    max-width: 1200px;
-    margin: 0 auto;
+    margin: 0 17%;
     padding: 0 $spacing-unit;
   }
 
   &__title {
     font-family: League Gothic;
     font-weight: 400;
-    font-size: 1.6rem;
+    font-size: 2rem;
     letter-spacing: 0%;
     text-transform: uppercase;
     color: $text-dark;
@@ -511,17 +662,21 @@ $transition-speed: 0.3s;
     }
   }
 
+  &__step--border-0 {
+    border-bottom: 0;
+  }
+
   &__step-number {
+    font-family: League Gothic;
     display: flex;
     align-items: center;
     justify-content: center;
     width: 80px;
     height: 80px;
     color: #42b1ec;
-    font-size: 3rem;
+    font-size: 5rem;
     font-weight: 700;
     border-radius: 50%;
-    margin-right: $spacing-unit * 2;
     flex-shrink: 0;
 
     @media (max-width: 768px) {
@@ -537,8 +692,8 @@ $transition-speed: 0.3s;
   &__step-title {
     font-size: 1.5rem;
     font-weight: 600;
-    margin-bottom: $spacing-unit;
     color: $text-dark;
+    margin-bottom: 0.3em;
   }
 
   &__step-description {
@@ -622,9 +777,10 @@ $transition-speed: 0.3s;
   }
 
   &__label {
+    font-family: 'League Gothic', sans-serif;
     display: inline-block;
-    font-size: 1rem;
-    font-weight: 600;
+    font-size: 2rem;
+    font-weight: 400;
     color: $white;
     margin-bottom: $spacing-unit;
     letter-spacing: 2px;
@@ -640,8 +796,9 @@ $transition-speed: 0.3s;
   }
 
   &__title {
-    font-size: 4rem;
-    font-weight: 800;
+    font-family: 'League Gothic', sans-serif;
+    font-size: 8rem;
+    font-weight: 400;
     color: $white;
     margin-bottom: $spacing-unit * 2;
     line-height: 1.1;
@@ -651,6 +808,7 @@ $transition-speed: 0.3s;
     transition: opacity 0.5s ease, transform 0.5s ease;
     transition-delay: 0.4s;
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    width: 9em;
 
     @media (max-width: 992px) {
       font-size: 3rem;
@@ -668,20 +826,17 @@ $transition-speed: 0.3s;
 
   &__button {
     display: inline-block;
-    background-color: $primary-color-paint;
-    color: $white;
+    background-color: #42b1ec;
+    color: #ffffff;
+    padding: 1rem 2.3rem;
     text-decoration: none;
-    padding: $spacing-unit calc($spacing-unit * 2);
-    border-radius: 4px;
-    font-weight: 600;
-    font-size: 1rem;
     text-transform: uppercase;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    opacity: 0;
-    transform: translateY(20px);
-    transition-delay: 0.6s;
-    align-self: flex-start;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    font-weight: 400;
+    border-radius: 10px;
+    transition: background-color 0.3s;
+    font-size: 2rem;
+    font-family: 'League Gothic', sans-serif;
+    width: max-content;
 
     .work-gallery__slide--active & {
       opacity: 1;

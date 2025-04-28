@@ -6,7 +6,7 @@ const autoPlayInterval = ref(null)
 
 const slides = [
   {
-    image: '/',
+    image: '/img/work-gallery.webp',
     alt: 'Fekete fényezett autó',
     label: 'GALÉRIA',
     title: 'MUNKÁINK MAGUKÉRT BESZÉLNEK!',
@@ -14,7 +14,7 @@ const slides = [
     // buttonLink: '/galeria',
   },
   {
-    image: '/',
+    image: '/img/work-gallery.webp',
     alt: 'Fényezés alatt álló autó',
     label: 'REFERENCIÁK',
     title: 'MINŐSÉGI MUNKA MINDEN ALKALOMMAL',
@@ -22,7 +22,7 @@ const slides = [
     // buttonLink: '/galeria',
   },
   {
-    image: '/',
+    image: '/img/work-gallery.webp',
     alt: 'Piros fényezett autó',
     label: 'MUNKÁINK',
     title: 'GYÁRI MINŐSÉG, ELÉGEDETT ÜGYFELEK',
@@ -30,7 +30,7 @@ const slides = [
     // buttonLink: '/galeria',
   },
   {
-    image: '/',
+    image: '/img/work-gallery.webp',
     alt: 'Részletes fényezési munka',
     label: 'PORTFÓLIÓ',
     title: 'PRECIZITÁS MINDEN RÉSZLETBEN',
@@ -62,6 +62,25 @@ onBeforeUnmount(() => {
 })
 </script>
 <template>
+  <!-- Hero contact bar -->
+  <section class="hero">
+    <div class="hero__container">
+      <div class="hero__content">
+        <h1 class="hero__title">AUTÓD MEGÉRDEMLI<br />A CSILLOGÁST</h1>
+      </div>
+
+      <div class="hero__image-container position-relative">
+        <div class="hero__cta position-absolute">
+          <a href="/ajanlatkeres" class="hero__cta-button">AJÁNLATKÉRÉS</a>
+        </div>
+        <img
+          src="/img/hero.webp"
+          alt="Csillogó kék autó fényszóró"
+          class="hero__image"
+        />
+      </div>
+    </div>
+  </section>
   <!-- Top contact bar -->
   <div class="contact-bar">
     <div class="contact-bar__container">
@@ -138,7 +157,47 @@ onBeforeUnmount(() => {
           Ne hagyja, hogy egy sérülés elrontsa autója megjelenését vagy
           csökkentse annak értékét! Kérjen árajánlatot még ma!
         </p>
-        <a href="#quote" class="paint-benefits__cta-button">AJÁNLATKÉRÉS</a>
+        <NuxtLink to="/" class="paint-benefits__cta-button"
+          >AJÁNLATKÉRÉS</NuxtLink
+        >
+      </div>
+    </div>
+    <div class="paint-benefits__container paint-benefits__container--format">
+      <div class="paint-benefits__content paint-benefits__content--format">
+        <h2 class="paint-benefits__title">
+          Az autófényezés titkai: Miért több ez, mint egyszerű festés?
+        </h2>
+        <p class="paint-benefits__description">
+          Az autófényezés valódi művészet, amely messze túlmutat az egyszerű
+          festési folyamaton. Kevesen tudják, hogy egy professzionális fényezés
+          akár 15-20 különböző réteget is tartalmazhat, amelyek mindegyike
+          speciális funkciót tölt be. A modern autófényezés során alkalmazott
+          nanotechnológiás lakkok nem csupán esztétikai célt szolgálnak, hanem
+          védelmet nyújtanak az UV-sugárzás, a savas eső, a madárürülék és egyéb
+          környezeti hatások ellen is.
+        </p>
+        <p class="paint-benefits__description">
+          Egy szakszerűen kivitelezett fényezés jelentősen növelheti járműve
+          élettartamát és megőrizheti annak értékét. A legújabb
+          kerámiabevonatokkal pedig olyan víztaszító felületet lehet
+          kialakítani, amely akár 5-7 évig is megőrzi a frissen fényezett autó
+          csillogását. Gondolt már arra, milyen hatással lehet autója
+          megjelenése az Önről kialakult első benyomásra? Fedezze fel prémium
+          fényezési szolgáltatásainkat, és tegye autóját igazán egyedivé!
+        </p>
+        <p class="paint-benefits__description">
+          Gondolt már arra, milyen hatással lehet autója megjelenése az Önről
+          kialakult első benyomásra? Fedezze fel prémium fényezési
+          szolgáltatásainkat, és tegye autóját igazán egyedivé!
+        </p>
+      </div>
+      <div class="paint-benefits__media">
+        <NuxtImg
+          src="/img/paint-benefits2.webp"
+          alt="paint-benefits__image"
+          class="paint-benefits__image paint-benefits__image--format"
+          height="100%"
+        />
       </div>
     </div>
   </section>
@@ -203,7 +262,7 @@ onBeforeUnmount(() => {
           </div>
         </div>
 
-        <div class="painting-process__step">
+        <div class="painting-process__step painting-process__step--border-0">
           <div class="painting-process__step-number">5</div>
           <div class="painting-process__step-content">
             <h3 class="painting-process__step-title">
@@ -216,6 +275,11 @@ onBeforeUnmount(() => {
             </p>
           </div>
         </div>
+      </div>
+      <div class="text-center">
+        <NuxtLink to="/" class="paint-benefits__cta-button"
+          >AJÁNLATKÉRÉS</NuxtLink
+        >
       </div>
     </div>
   </section>

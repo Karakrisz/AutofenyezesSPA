@@ -1,12 +1,11 @@
 <script setup>
 const links = [
-  { name: 'Főoldal', path: '/' },
-  { name: 'Partnerek', path: '/partnerek' },
-  { name: 'Szolgáltatások', path: '/szolgaltatasok' },
-  { name: 'Dokumentumok', path: '/dokumentumok' },
-  { name: 'Ajánlatkérés', path: '/ajanlatkeres' },
-  { name: 'Kapcsolat', path: '/kapcsolat' },
-  { name: 'Facebook', path: '/', imagePath: '/img/header/facebook.svg' },
+  { name: 'Főoldal', path: '/', noBorder: false },
+  { name: 'GALÉRIA', path: '/', noBorder: false },
+  { name: 'RÓLUNK', path: '/', noBorder: false },
+  { name: 'KAPCSOLAT', path: '/', noBorder: false },
+  { name: 'REFERENCIÁK', path: '/', noBorder: true },
+  { name: 'SZOLGÁLTATÁSOK', path: '/', noBorder: true },
 ]
 
 const isMenuOpen = ref(false)
@@ -18,7 +17,7 @@ const isMenuOpen = ref(false)
       <div class="logo-box header-content__logo-box">
         <a href="/" class="header-content__logo-box__link">
           <NuxtImg
-            src="/img/header/logo.svg"
+            src="/img/logo.png"
             alt="Biztos Alkuszom"
             class="header-content__logo-box__link__img"
             height="100%"
@@ -37,10 +36,18 @@ const isMenuOpen = ref(false)
         </button>
         <nav :class="{ 'menu--open': isMenuOpen, menu: true }" id="menu">
           <ul id="menu__list" class="menu__list d-flex">
-            <li v-for="link in links" :key="link.path" class="menu__list__li">
+            <li
+              v-for="link in links"
+              :key="link.path"
+              class="menu__list__li"
+              :class="{ 'menu__list__li--no-border': link.noBorder }"
+            >
               <NuxtLink
                 :to="link.path"
-                :class="['menu__item text-color text-transform-uppercase']"
+                :class="[
+                  'menu__item text-color text-transform-uppercase',
+                  { 'menu__item--no-border': link.noBorder },
+                ]"
               >
                 <template v-if="link.imagePath">
                   <NuxtImg
