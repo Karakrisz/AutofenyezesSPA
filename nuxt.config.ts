@@ -6,7 +6,7 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      title: 'Digital Seed Studio',
+      title: 'Autó fényezés',
       htmlAttrs: {
         lang: 'hu',
       },
