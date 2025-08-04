@@ -6,7 +6,7 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      title: 'Autó fényezés',
+      title: 'Autófényezés Budapesten - tapasztalt, precíz munka, modern technológiával.',
       htmlAttrs: {
         lang: 'hu',
       },
@@ -17,7 +17,7 @@ export default defineNuxtConfig({
           hid: 'description',
           name: 'description',
           content:
-            'SEO-optimalizált weboldal készítés vállalkozásoknakLegyen weboldalad gyors, modern és keresőoptimalizált!',
+            'Budapesten elérhető professzionális autófényezési szolgáltatásaink segítenek visszaadni autója eredeti fényét és értékét. Legyen szó kisebb karcokról, horpadás utáni fényezésről vagy teljes újrafényezésről.',
         },
         { name: 'format-detection', content: 'telephone=no' },
         { hid: 'robots', name: 'robots', content: 'index, follow' },
@@ -34,7 +34,6 @@ export default defineNuxtConfig({
       ],
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-        { rel: 'canonical', href: 'https://www.alkuszom.info' },
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
         {
           rel: 'preconnect',
@@ -71,7 +70,7 @@ export default defineNuxtConfig({
   ],
 
   site: {
-    url: 'https://www.alkuszom.info',
+    url: 'https://www.autofenyezes.hu',
     trailingSlash: true,
   },
 
