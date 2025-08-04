@@ -17,7 +17,7 @@ export default defineNuxtConfig({
           hid: 'description',
           name: 'description',
           content:
-            'Budapesten elérhető professzionális autófényezési szolgáltatásaink segítenek visszaadni autója eredeti fényét és értékét. Legyen szó kisebb karcokról, horpadás utáni fényezésről vagy teljes újrafényezésről.',
+            'Budapesten elérhető professzionális autófényezési szolgáltatásaink segítenek visszaadni autója eredeti fényét és értékét.',
         },
         { name: 'format-detection', content: 'telephone=no' },
         { hid: 'robots', name: 'robots', content: 'index, follow' },
