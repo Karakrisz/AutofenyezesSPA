@@ -1009,7 +1009,7 @@ $transition-speed: 0.3s;
 }
 
 @include responsive(tablet) {
-  // Tablet styles here
+
 }
 
 // Menu Colors
@@ -1102,6 +1102,15 @@ $hamburger-bar-color: #1c362b;
       &--border-left {
         border-left: unset;
       }
+    }
+  }
+  .footer-content {
+    flex-direction: column;
+    &__map {
+      width: 100%;
+    }
+    &__form {
+      width: 100%;
     }
   }
 }
