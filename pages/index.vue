@@ -71,9 +71,9 @@ onBeforeUnmount(() => {
 
       <div class="hero__image-container position-relative">
         <div class="hero__cta position-absolute">
-          <a href="/ajanlatkeres" class="hero__cta-button">AJÁNLATKÉRÉS</a>
+          <NuxtLink to="/" class="hero__cta-button">AJÁNLATKÉRÉS</NuxtLink>
         </div>
-        <img
+        <NuxtImg
           src="/img/hero.webp"
           alt="Csillogó kék autó fényszóró"
           class="hero__image"
