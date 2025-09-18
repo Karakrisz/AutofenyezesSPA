@@ -1,4 +1,5 @@
 <script setup>
+import { NuxtLink } from '#components'
 import { ref } from 'vue'
 
 useHead({
@@ -299,7 +300,7 @@ const getServiceDisplayName = (serviceValue) => {
           <p class="page-color">
             <i class="supage-content__p__i">
               Az Időpont foglalása gombra kattintva automatikusan elfogadja az
-              Adatvédelmi Szabályzatot.
+              <NuxtLink class="supage-content__nlink" to="/adatvedelmi-tajekoztato">Adatvédelmi Szabályzatot.</NuxtLink>
             </i>
           </p>
           <!-- Success/Error Message -->
@@ -329,6 +330,10 @@ const getServiceDisplayName = (serviceValue) => {
 
 .subpage {
   padding: 12em 5em 3em 5em;
+}
+
+.supage-content__nlink {
+  color: #42b1ec;
 }
 
 .trust-banner {

@@ -90,8 +90,8 @@ onBeforeUnmount(() => {
     <div class="contact-bar__container">
       <div class="contact-bar__item">
         <span class="contact-bar__icon contact-bar__icon--phone"></span>
-        <a href="tel:+36703633217" class="contact-bar__link"
-          >+36 (70) 363 3217</a
+        <a href="tel:+36707436707" class="contact-bar__link"
+          >+36 70 743 6707</a
         >
       </div>
       <div class="contact-bar__item">
