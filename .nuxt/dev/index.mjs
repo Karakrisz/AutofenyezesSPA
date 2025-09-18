@@ -1,4 +1,4 @@
-import process from 'node:process';globalThis._importMeta_={url:import.meta.url,env:process.env};import { getRequestHeader, splitCookiesString, setResponseStatus, setResponseHeader, send, getRequestHeaders, defineEventHandler, handleCacheHeaders, createEvent, fetchWithEvent, isEvent, eventHandler, getResponseStatus, setResponseHeaders, setHeaders, sendRedirect, proxyRequest, createError, getRequestHost, getRequestProtocol, setHeader, getHeader, getQuery as getQuery$1, readBody, lazyEventHandler, useBase, createApp, createRouter as createRouter$1, toNodeListener, getRouterParam, getResponseStatusText } from 'file:///Applications/XAMPP/xamppfiles/htdocs/AutofenyezesSPA/node_modules/h3/dist/index.mjs';
+import process from 'node:process';globalThis._importMeta_={url:import.meta.url,env:process.env};import { getRequestHeader, splitCookiesString, setResponseStatus, setResponseHeader, send, getRequestHeaders, defineEventHandler, handleCacheHeaders, createEvent, fetchWithEvent, isEvent, eventHandler, getResponseStatus, setResponseHeaders, setHeaders, sendRedirect, proxyRequest, createError, getRequestHost, getRequestProtocol, setHeader, getHeader, getQuery as getQuery$1, lazyEventHandler, useBase, createApp, createRouter as createRouter$1, toNodeListener, getRouterParam, readBody, getResponseStatusText } from 'file:///Applications/XAMPP/xamppfiles/htdocs/AutofenyezesSPA/node_modules/h3/dist/index.mjs';
 import { Server } from 'node:http';
 import { mkdirSync } from 'node:fs';
 import { tmpdir } from 'node:os';
@@ -25,9 +25,6 @@ import { consola } from 'file:///Applications/XAMPP/xamppfiles/htdocs/Autofenyez
 import { captureRawStackTrace, parseRawStackTrace } from 'file:///Applications/XAMPP/xamppfiles/htdocs/AutofenyezesSPA/node_modules/errx/dist/index.js';
 import { isVNode, toValue, version, unref } from 'file:///Applications/XAMPP/xamppfiles/htdocs/AutofenyezesSPA/node_modules/vue/index.mjs';
 import devalue from 'file:///Applications/XAMPP/xamppfiles/htdocs/AutofenyezesSPA/node_modules/@nuxt/devalue/dist/devalue.mjs';
-import nodemailer from 'file:///Applications/XAMPP/xamppfiles/htdocs/AutofenyezesSPA/node_modules/nodemailer/lib/nodemailer.js';
-import options from 'file:///Applications/XAMPP/xamppfiles/htdocs/AutofenyezesSPA/.nuxt/nuxt-mail/options.mjs';
-import send$1 from 'file:///Applications/XAMPP/xamppfiles/htdocs/AutofenyezesSPA/.nuxt/nuxt-mail/send.mjs';
 import { fileURLToPath } from 'node:url';
 import { ipxFSStorage, ipxHttpStorage, createIPX, createIPXH3Handler } from 'file:///Applications/XAMPP/xamppfiles/htdocs/AutofenyezesSPA/node_modules/ipx/dist/index.mjs';
 import { isAbsolute } from 'file:///Applications/XAMPP/xamppfiles/htdocs/AutofenyezesSPA/node_modules/pathe/dist/index.mjs';
@@ -2228,19 +2225,6 @@ const _GE0CpT = defineEventHandler(async (e) => {
   return createSitemap(e, Object.values(sitemaps)[0], runtimeConfig);
 });
 
-const transport = nodemailer.createTransport(options.smtp);
-const _T7hXyV = defineEventHandler(async event => {
-  try {
-    await send$1(await readBody(event), options, transport);
-  } catch (error) {
-    throw createError({
-      statusCode: 500,
-      statusMessage: error.message
-    });
-  }
-  return '';
-});
-
 const _L8PtUm = lazyEventHandler(() => {
   const opts = useRuntimeConfig().ipx || {};
   const fsDir = opts?.fs?.dir ? (Array.isArray(opts.fs.dir) ? opts.fs.dir : [opts.fs.dir]).map((dir) => isAbsolute(dir) ? dir : fileURLToPath(new URL(dir, globalThis._importMeta_.url))) : undefined;
@@ -2268,7 +2252,6 @@ const handlers = [
   { route: '/__sitemap__/debug.json', handler: _KVHxrJ, lazy: false, middleware: false, method: undefined },
   { route: '/__sitemap__/style.xsl', handler: _TMfKKk, lazy: false, middleware: false, method: undefined },
   { route: '/sitemap.xml', handler: _GE0CpT, lazy: false, middleware: false, method: undefined },
-  { route: '/mail/send', handler: _T7hXyV, lazy: false, middleware: false, method: "post" },
   { route: '/_ipx/**', handler: _L8PtUm, lazy: false, middleware: false, method: undefined },
   { route: '/**', handler: _lazy_wMFwLT, lazy: true, middleware: false, method: undefined }
 ];
@@ -2492,40 +2475,13 @@ const sources$1 = [
                 "loc": "/adatvedelmi-tajekoztato"
             },
             {
-                "loc": "/ajanlatkeres"
-            },
-            {
-                "loc": "/dokumentumok"
-            },
-            {
-                "loc": "/gepjarmu-biztositas"
+                "loc": "/idopontfoglalas"
             },
             {
                 "loc": "/"
             },
             {
                 "loc": "/kapcsolat"
-            },
-            {
-                "loc": "/karbejentes"
-            },
-            {
-                "loc": "/partnerek"
-            },
-            {
-                "loc": "/rendezvenyszolgalat"
-            },
-            {
-                "loc": "/szemelyes-tanacsadas"
-            },
-            {
-                "loc": "/szolgaltatasok"
-            },
-            {
-                "loc": "/tanulobiztositas"
-            },
-            {
-                "loc": "/utasbiztositas"
             }
         ],
         "sourceType": "app"

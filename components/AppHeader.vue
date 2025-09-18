@@ -1,15 +1,29 @@
 <script setup>
+import { ref, computed } from 'vue'
+import { useRoute } from 'vue-router'
+
+const specialPaths = [
+  '/idopontfoglalas',
+  '/arlista', 
+  '/szolgaltatasok',
+  '/galeria',
+  '/rolunk',
+  '/kapcsolat'
+]
+
+const route = useRoute()
+const isSpecialPage = computed(() => specialPaths.includes(route.path))
+
 const links = [
   { name: 'Főoldal', path: '/', noBorder: false },
-  { name: 'GALÉRIA', path: '/', noBorder: false },
-  { name: 'RÓLUNK', path: '/', noBorder: false },
-  { name: 'KAPCSOLAT', path: '/', noBorder: false },
-  { name: 'REFERENCIÁK', path: '/', noBorder: true },
-  { name: 'SZOLGÁLTATÁSOK', path: '/', noBorder: true },
+  { name: 'RÓLUNK', path: '/', target: 'rolunk', noBorder: false },
+  { name: 'GALÉRIA', path: '/', target: 'galeria', noBorder: false },
+  { name: 'KAPCSOLAT', path: '/', target: 'kapcsolat', noBorder: true },
 ]
 
 const isMenuOpen = ref(false)
 const isMobile = ref(false)
+const router = useRouter()
 
 const checkScreenSize = () => {
   isMobile.value = window.innerWidth < 1199
@@ -23,8 +37,6 @@ onMounted(() => {
 onBeforeUnmount(() => {
   window.removeEventListener('resize', checkScreenSize)
 })
-
-const route = useRoute()
 
 watch(
   () => route.path,
@@ -40,11 +52,60 @@ watch(isMenuOpen, (newVal) => {
     document.body.style.overflow = ''
   }
 })
+
+const scrollToSection = (target) => {
+  if (target) {
+    const element = document.getElementById(target)
+    if (element) {
+      element.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      })
+    }
+  }
+}
+
+const activeSection = ref('')
+
+const handleNavClick = async (link, event) => {
+  if (link.target) {
+    event.preventDefault()
+    
+    // Aktív szekció beállítása
+    activeSection.value = link.target
+    
+    // Ha nem vagyunk a főoldalon, először oda navigálunk
+    if (route.path !== '/') {
+      await router.push('/')
+      // Kis késleltetés, hogy a DOM frissüljön
+      setTimeout(() => {
+        scrollToSection(link.target)
+      }, 100)
+    } else {
+      // Ha már a főoldalon vagyunk, azonnal görgetünk
+      scrollToSection(link.target)
+    }
+    
+    // Mobil menü bezárása
+    if (isMobile.value) {
+      isMenuOpen.value = false
+    }
+  }
+}
+
+const isActive = (link) => {
+  if (link.path === '/' && !link.target) {
+    return route.path === '/' && !activeSection.value
+  }
+  return link.target && activeSection.value === link.target
+}
 </script>
 
 <template>
   <header class="header">
-    <div class="header-content d-flex position-relative bg-color-w">
+    <div 
+      :class="['header-content d-flex position-relative bg-color-w', { 'header-bg-special': isSpecialPage }]"
+    >
       <div class="logo-box header-content__logo-box">
         <NuxtLink to="/" class="header-content__logo-box__link">
           <NuxtImg
@@ -82,17 +143,21 @@ watch(isMenuOpen, (newVal) => {
           <ul id="menu__list" class="menu__list d-flex">
             <li
               v-for="link in links"
-              :key="link.path"
+              :key="link.path + (link.target || '')"
               class="menu__list__li"
               :class="{ 'menu__list__li--no-border': link.noBorder }"
             >
+              <!-- Normál link a főoldalhoz -->
               <NuxtLink
+                v-if="!link.target"
                 :to="link.path"
                 :class="[
                   'menu__item text-color text-transform-uppercase',
                   { 'menu__item--no-border': link.noBorder },
+                  { 'menu__item--active': isActive(link) },
+                  { 'menu-item-color-special': isSpecialPage },
                 ]"
-                @click="isMobile ? (isMenuOpen = false) : null"
+                @click="activeSection = ''; isMobile ? (isMenuOpen = false) : null"
               >
                 <template v-if="link.imagePath">
                   <NuxtImg
@@ -106,6 +171,31 @@ watch(isMenuOpen, (newVal) => {
                   {{ link.name }}
                 </template>
               </NuxtLink>
+              
+              <!-- Scroll link a szekciókhoz -->
+              <a
+                v-else
+                href="#"
+                :class="[
+                  'menu__item text-color text-transform-uppercase',
+                  { 'menu__item--no-border': link.noBorder },
+                  { 'menu__item--active': isActive(link) },
+                  { 'menu-item-color-special': isSpecialPage },
+                ]"
+                @click="handleNavClick(link, $event)"
+              >
+                <template v-if="link.imagePath">
+                  <NuxtImg
+                    class="menu__list__li__img"
+                    height="100%"
+                    :src="link.imagePath"
+                    :alt="link.name"
+                  />
+                </template>
+                <template v-else>
+                  {{ link.name }}
+                </template>
+              </a>
             </li>
           </ul>
         </nav>
@@ -115,9 +205,25 @@ watch(isMenuOpen, (newVal) => {
 </template>
 
 <style scoped>
+html {
+  scroll-behavior: smooth;
+}
+
 .hamburger,
 .menu {
   background-color: #000;
+}
+
+/* Speciális oldal stílusok - csak desktop nézetben */
+@media screen and (min-width: 1200px) {
+  .header-bg-special {
+    background-color: #000 !important;
+    padding: 1em 0 0 5em;
+  }
+  
+  .menu-item-color-special {
+    color: #fff !important;
+  }
 }
 
 @media screen and (max-width: 767px) {
@@ -134,7 +240,6 @@ watch(isMenuOpen, (newVal) => {
   .header-content__logo-box {
     width: 30%;
   }
-
 
   .hamburger,
   .menu {
@@ -245,10 +350,16 @@ watch(isMenuOpen, (newVal) => {
     position: relative;
     transition: all 0.3s ease;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    text-decoration: none;
   }
 
   .menu__item--no-border {
     border-bottom: none;
+    border-right: none;
+  }
+
+  .menu__item--active {
+    border-bottom: 2px solid #fff !important;
   }
 
   .menu__item::after {
@@ -262,8 +373,11 @@ watch(isMenuOpen, (newVal) => {
     transition: width 0.3s ease;
   }
 
-  .menu__item:hover::after,
-  .menu__item.router-link-active::after {
+  .menu__item:hover::after {
+    width: 100%;
+  }
+
+  .menu__item--active::after {
     width: 100%;
   }
 
@@ -416,7 +530,22 @@ watch(isMenuOpen, (newVal) => {
 
   .menu__item {
     font-size: 1rem;
-    border:0
+    padding: 0.8em 0;
+    color: #fff;
+    width: 100%;
+    display: block;
+    text-align: left;
+    font-weight: 600;
+    position: relative;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    text-decoration: none;
+    border-right: 0;
+  }
+
+  .menu__item--no-border {
+    border-bottom: none;
+    border-right: none;
   }
 }
 

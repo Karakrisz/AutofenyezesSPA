@@ -7,35 +7,35 @@ const autoPlayInterval = ref(null)
 const slides = [
   {
     image: '/img/work-gallery.webp',
-    alt: 'Fekete fényezett autó',
-    label: 'GALÉRIA',
-    title: 'MUNKÁINK MAGUKÉRT BESZÉLNEK!',
-    buttonText: 'GALÉRIA',
-    // buttonLink: '/galeria',
+    alt: 'Profi autófényezés eredménye - tartós, szép munka',
+    label: 'ELÉGEDETT ÜGYFELEK',
+    title: 'NEM FOLTOS, NEM PÖTTYÖS - PRECÍZ MUNKA!',
+    buttonText: 'KÉREK AJÁNLATOT',
+    buttonLink: '/idopontfoglalas',
   },
   {
     image: '/img/work-gallery.webp',
-    alt: 'Fényezés alatt álló autó',
-    label: 'REFERENCIÁK',
-    title: 'MINŐSÉGI MUNKA MINDEN ALKALOMMAL',
-    buttonText: 'GALÉRIA',
-    // buttonLink: '/galeria',
+    alt: 'Gyári minőségű autófényezés - korrekt áron',
+    label: 'VÉLEMÉNYEK',
+    title: 'ÜGYFELEINK AJÁNLANAK MINKET',
+    buttonText: 'ÉRDEKEL A SZOLGÁLTATÁS',
+    buttonLink: '/idopontfoglalas',
   },
   {
     image: '/img/work-gallery.webp',
-    alt: 'Piros fényezett autó',
-    label: 'MUNKÁINK',
-    title: 'GYÁRI MINŐSÉG, ELÉGEDETT ÜGYFELEK',
-    buttonText: 'GALÉRIA',
-    // buttonLink: '/galeria',
+    alt: 'Garantált minőségű fényezés - 4 napos átadás',
+    label: 'GARANCIA',
+    title: 'VÉGEREDMÉNYRE GARANCIÁT VÁLLALUNK',
+    buttonText: 'FOGLALOM AZ IDŐPONTOT',
+    buttonLink: '/idopontfoglalas',
   },
   {
     image: '/img/work-gallery.webp',
-    alt: 'Részletes fényezési munka',
-    label: 'PORTFÓLIÓ',
-    title: 'PRECIZITÁS MINDEN RÉSZLETBEN',
-    buttonText: 'GALÉRIA',
-    // buttonLink: '/galeria',
+    alt: 'Minőségi alapanyagokkal készült autófényezés',
+    label: 'MINŐSÉG',
+    title: 'MINŐSÉGI ALAPANYAGOK - NEM SPÓROLUNK',
+    buttonText: 'KÉREM A RÉSZLETEKET',
+    buttonLink: '/idopontfoglalas',
   },
 ]
 
@@ -66,16 +66,20 @@ onBeforeUnmount(() => {
   <section class="hero">
     <div class="hero__container">
       <div class="hero__content">
-        <h1 class="hero__title">AUTÓD MEGÉRDEMLI<br />A CSILLOGÁST</h1>
+        <h1 class="hero__title">
+          PRECÍZ MUNKA, SZÉP EREDMÉNY<br />KORREKT ÁRON
+        </h1>
       </div>
 
       <div class="hero__image-container position-relative">
         <div class="hero__cta position-absolute">
-          <NuxtLink to="/" class="hero__cta-button">AJÁNLATKÉRÉS</NuxtLink>
+          <NuxtLink to="/idopontfoglalas" class="hero__cta-button"
+            >INGYENES AJÁNLAT KÉRÉS</NuxtLink
+          >
         </div>
         <NuxtImg
           src="/img/hero.webp"
-          alt="Csillogó kék autó fényszóró"
+          alt="Profi autófényezés - gyári minőségű eredmény"
           class="hero__image"
         />
       </div>
@@ -109,92 +113,85 @@ onBeforeUnmount(() => {
     </div>
   </div>
 
-  <section class="paint-benefits">
-    <div class="paint-benefits__container">
+  <section class="paint-benefits" id="rolunk">
+    <div class="paint-benefits__container container">
       <div class="paint-benefits__media">
         <NuxtImg
           src="/img/paint-benefits.webp"
-          alt="paint-benefits__image"
+          alt="Minőségi autófényezés - tartós védelem"
           class="paint-benefits__image"
           height="100%"
         />
       </div>
       <div class="paint-benefits__content">
         <h2 class="paint-benefits__title">
-          MIÉRT FONTOS AZ AUTÓFÉNYEZÉS? – NEM CSAK ESZTÉTIKA KÉRDÉSE
+          MIÉRT VÁLASSZON MINKET? – PROFI MUNKAVÉGZÉS, MEGBÍZHATÓ EREDMÉNY
         </h2>
         <p class="paint-benefits__description">
-          Sokan csak akkor gondolnak a fényezésre, ha egy baleset vagy karcolás
-          miatt szükségessé válik. Pedig az autófényezés nem csupán esztétikai
-          kérdés – az autó fényezése egyben védelmi funkciót is betölt.
+          A meghúzások, karcolások, kőfelverődések és kisebb koccanások gyakoriak. 
+          De nem mindegy, hogy kinek bízza az autója javítását! Nálunk precíz munka, 
+          gyári színvonalú fényezés és korrekt árak várják.
         </p>
         <ul class="paint-benefits__list">
           <li class="paint-benefits__item">
             <strong class="paint-benefits__item-title"
-              >Védi a karosszériát a rozsdásodástól</strong
+              >Gyors szolgáltatás, 4 napos átadás</strong
             >
-            – Ha a fényezés megsérül, a csupasz fém ki van téve az időjárás
-            viszontagságainak, ami rozsdásodáshoz vezethet. Egy jó minőségű
-            fényezés megakadályozza ezt.
+            – Tudjuk, milyen nehéz megoldani a mindennapokat autó nélkül. 
+            Ezért garantáljuk a gyors, hatékony munkavégzést.
           </li>
           <li class="paint-benefits__item">
             <strong class="paint-benefits__item-title"
-              >Növeli az autó értékét</strong
+              >Minőségi alapanyagok - nem spórolunk</strong
             >
-            – Egy ápolt, szép fényezés növeli az autó piaci értékét. Egy kopott,
-            karcos jármű kevesebb figyelmet kap az eladáskor.
+            – Az olcsó fényezésnél később lepattog a lakk, felreped a gitt. 
+            Mi csak minőségi anyagokkal dolgozunk a tartós eredményért.
           </li>
           <li class="paint-benefits__item">
             <strong class="paint-benefits__item-title"
-              >Megvédi az autót az UV-sugárzástól</strong
+              >Végeredményre garanciát vállalunk</strong
             >
-            – Az UV-sugarak fakóvá, mattá és repedezett tehetik a festéket. A
-            minőségi lakkréteg ezt megelőzi, így autója hosszabb ideig marad
-            újszerű állapotban.
+            – Nem lehet egymásra mutogatni. A kész munkára teljes garanciát 
+            adunk, mert bízunk szakértelmünkben.
           </li>
         </ul>
         <p class="paint-benefits__cta-text">
-          Ne hagyja, hogy egy sérülés elrontsa autója megjelenését vagy
-          csökkentse annak értékét! Kérjen árajánlatot még ma!
+          Ne kockáztasson olcsó fényezéssel! Kérjen ingyenes ajánlatot 
+          kötelezettségek nélkül!
         </p>
-        <NuxtLink to="/" class="paint-benefits__cta-button"
-          >AJÁNLATKÉRÉS</NuxtLink
+        <NuxtLink to="/idopontfoglalas" class="paint-benefits__cta-button"
+          >INGYENES AJÁNLAT KÉRÉS</NuxtLink
         >
       </div>
     </div>
     <div class="paint-benefits__container paint-benefits__container--format">
       <div class="paint-benefits__content paint-benefits__content--format">
         <h2 class="paint-benefits__title">
-          Az autófényezés titkai: Miért több ez, mint egyszerű festés?
+          Mit jelent az olcsó autófényezés? Miért kerülje el?
         </h2>
         <p class="paint-benefits__description">
-          Az autófényezés valódi művészet, amely messze túlmutat az egyszerű
-          festési folyamaton. Kevesen tudják, hogy egy professzionális fényezés
-          akár 15-20 különböző réteget is tartalmazhat, amelyek mindegyike
-          speciális funkciót tölt be. A modern autófényezés során alkalmazott
-          nanotechnológiás lakkok nem csupán esztétikai célt szolgálnak, hanem
-          védelmet nyújtanak az UV-sugárzás, a savas eső, a madárürülék és egyéb
-          környezeti hatások ellen is.
+          Sokakat foglalkoztat: az olcsóbb vagy drágább opció jobb választás? 
+          A válasz egyértelmű. Az olcsó autófényezés gyakran jelenti: olcsó 
+          alapanyagok használatát, kimaradt előkészítési lépéseket, gyorsított 
+          munkavégzést. Ennek eredménye: felhős, foltos, pöttyös fényezés, 
+          amely nem tapad megfelelően.
         </p>
         <p class="paint-benefits__description">
-          Egy szakszerűen kivitelezett fényezés jelentősen növelheti járműve
-          élettartamát és megőrizheti annak értékét. A legújabb
-          kerámiabevonatokkal pedig olyan víztaszító felületet lehet
-          kialakítani, amely akár 5-7 évig is megőrzi a frissen fényezett autó
-          csillogását. Gondolt már arra, milyen hatással lehet autója
-          megjelenése az Önről kialakult első benyomásra? Fedezze fel prémium
-          fényezési szolgáltatásainkat, és tegye autóját igazán egyedivé!
+          Az igazság: ha nincs szerencséje, pár hónap múlva újra szóba kerül 
+          az autófényezés. Érdemes a vásárlói visszajelzések alapján dönteni, 
+          nem csak az ár alapján. A szakember kiválasztásakor az ügyfelek 
+          véleményeit néze meg - ez mutatja meg a valós minőséget.
         </p>
         <p class="paint-benefits__description">
-          Gondolt már arra, milyen hatással lehet autója megjelenése az Önről
-          kialakult első benyomásra? Fedezze fel prémium fényezési
-          szolgáltatásainkat, és tegye autóját igazán egyedivé!
+          Nálunk nem spórolunk az Ön kárára. Minden elem fényezését garantált 
+          minőségben végezzük el, szakmai tapasztalat és precizitás alapján. 
+          Bízza ránk nyugodtan autója javítását!
         </p>
       </div>
       <div class="paint-benefits__media">
         <NuxtImg
           src="/img/paint-benefits2.webp"
-          alt="paint-benefits__image"
+          alt="Szakszerű autófényezés folyamata"
           class="paint-benefits__image paint-benefits__image--format"
           height="100%"
         />
@@ -204,25 +201,24 @@ onBeforeUnmount(() => {
 
   <section class="painting-process">
     <div class="painting-process__container">
-      <h2 class="painting-process__title">HOGYAN ZAJLIK A FÉNYEZÉS?</h2>
+      <h2 class="painting-process__title">MIÉRT NEM LESZ FOLTOS, PÖTTYÖS A FÉNYEZÉS NÁLUNK?</h2>
 
       <p class="painting-process__description">
-        A tökéletes autófényezés precíz előkészítést, modern technológiát és
-        szakértelmet igényel. A folyamat sokkal összetettebb annál, mint hogy
-        egyszerűen ráfújjuk a festéket a felületre – minden lépésnek
-        kulcsszerepe van abban, hogy a végeredmény tartós, egyenletes és gyári
-        minőségű legyen.
+        Sokan kérdezik: mi a különbség a drága és olcsó fényezés között? 
+        A válasz a precíz munkavégzésben és a szakmai tapasztalatban rejlik. 
+        Nálunk minden lépést betartunk - ezért garantálunk tartós, egyenletes, 
+        gyári minőségű eredményt.
       </p>
 
       <div class="painting-process__steps">
         <div class="painting-process__step">
           <div class="painting-process__step-number">1</div>
           <div class="painting-process__step-content">
-            <h3 class="painting-process__step-title">Felület előkészítése</h3>
+            <h3 class="painting-process__step-title">Alapos előkészítés - nem hagyunk ki lépéseket</h3>
             <p class="painting-process__step-description">
-              Az autót alaposan megtisztítjuk, eltávolítjuk a sérült vagy
-              megkopott festékréteget. A horpadásokat, karcolásokat kijavítjuk,
-              hogy a felület teljesen sima legyen.
+              Az olcsó fényezésnél gyakran kimaradnak előkészítési lépések. 
+              Nálunk minden sérülést, karcolást szakszerűen javítunk, alaposan 
+              megtisztítjuk a felületet. Csak így lehet tartós a tapadás.
             </p>
           </div>
         </div>
@@ -230,10 +226,11 @@ onBeforeUnmount(() => {
         <div class="painting-process__step">
           <div class="painting-process__step-number">2</div>
           <div class="painting-process__step-content">
-            <h3 class="painting-process__step-title">Alapozás</h3>
+            <h3 class="painting-process__step-title">Minőségi alapanyagok - nem spórolunk</h3>
             <p class="painting-process__step-description">
-              Egy speciális alapozóréteget viszünk fel, amely megerősíti a
-              tapadást és védi a karosszériát a korróziótól.
+              Speciális alapozóréteget használunk, amely megerősíti a tapadást. 
+              Az olcsó alapanyagok használata később problémákhoz vezet - 
+              ezért mi csak minőségi termékekkel dolgozunk.
             </p>
           </div>
         </div>
@@ -241,11 +238,11 @@ onBeforeUnmount(() => {
         <div class="painting-process__step">
           <div class="painting-process__step-number">3</div>
           <div class="painting-process__step-content">
-            <h3 class="painting-process__step-title">Színkeverés és festés</h3>
+            <h3 class="painting-process__step-title">Gyári színkód szerinti precíz festés</h3>
             <p class="painting-process__step-description">
-              A gyári színkód alapján precízen bekeverjük a festéket, majd
-              pormentes fényezőkamrában, több rétegben visszük fel, hogy
-              tökéletes, egyenletes fedést érjünk el.
+              Pormentes fényezőkamrában, több rétegben visszük fel a festéket. 
+              Nem gyorsítjuk a munkát - minden rétegnek idő kell a megfelelő 
+              száradáshoz és tapadáshoz.
             </p>
           </div>
         </div>
@@ -253,11 +250,11 @@ onBeforeUnmount(() => {
         <div class="painting-process__step">
           <div class="painting-process__step-number">4</div>
           <div class="painting-process__step-content">
-            <h3 class="painting-process__step-title">Lakkozás és védelem</h3>
+            <h3 class="painting-process__step-title">Védőlakk - tartósság garantálva</h3>
             <p class="painting-process__step-description">
-              A festett felületre egy átlátszó védőlakkot viszünk fel, amely
-              növeli a tartósságot, megvédi a fényezést az időjárási hatásoktól
-              és az UV-sugárzástól.
+              UV-álló védőlakkot viszünk fel, amely megvédi a fényezést. 
+              Ez biztosítja, hogy a festék ne fakúljon, ne repedezzen - 
+              hosszú évekig megőrzi szépségét.
             </p>
           </div>
         </div>
@@ -266,24 +263,23 @@ onBeforeUnmount(() => {
           <div class="painting-process__step-number">5</div>
           <div class="painting-process__step-content">
             <h3 class="painting-process__step-title">
-              Polírozás és végső ellenőrzés
+              Polírozás és minőségellenőrzés
             </h3>
             <p class="painting-process__step-description">
-              Az utolsó simítások során a teljes felületet finoman átdolgozzuk,
-              hogy a lakk hibátlanul sima és egyenletes legyen, majd alapos
-              ellenőrzés után az autó készen áll az átadásra.
+              Alapos ellenőrzés után adjuk át az autót. Minden munkánkra 
+              garanciát vállalunk - ha nem elégedett, javítjuk. 
+              Nálunk nem lehet egymásra mutogatni.
             </p>
           </div>
         </div>
       </div>
       <div class="text-center">
-        <NuxtLink to="/" class="paint-benefits__cta-button"
-          >AJÁNLATKÉRÉS</NuxtLink
-        >
+        <NuxtLink to="/idopontfoglalas" class="paint-benefits__cta-button">IDŐPONTFOGLALÁS</NuxtLink>
       </div>
     </div>
   </section>
-  <section class="work-gallery">
+  
+  <section class="work-gallery" id="galeria">
     <div class="work-gallery__container">
       <div class="work-gallery__slider">
         <div

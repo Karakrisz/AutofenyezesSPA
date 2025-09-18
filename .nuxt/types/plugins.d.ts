@@ -21,7 +21,6 @@ type NuxtAppInjections =
   InjectionType<typeof import("../../node_modules/@nuxt/devtools/dist/runtime/plugins/devtools.client.js")> &
   InjectionType<typeof import("../../node_modules/nuxt/dist/app/plugins/dev-server-logs.js")> &
   InjectionType<typeof import("../../node_modules/nuxt/dist/app/plugins/check-if-layout-used.js")> &
-  InjectionType<typeof import("../../node_modules/nuxt-mail/dist/plugin-nuxt3.js")> &
   InjectionType<typeof import("../../plugins/chaosWaves.client.js")>
 
 declare module '#app' {

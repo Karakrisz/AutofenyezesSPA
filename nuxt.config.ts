@@ -51,22 +51,6 @@ export default defineNuxtConfig({
   modules: [
     '@nuxt/image',
     '@nuxtjs/sitemap',
-    [
-      'nuxt-mail',
-      {
-        message: {
-          to: 'web@alkuszom.info',
-        },
-        smtp: {
-          host: 's56.tarhely.com',
-          port: 587,
-          auth: {
-            user: 'web@alkuszom.info',
-            pass: '#+SpM_HR~QCy',
-          },
-        },
-      },
-    ],
   ],
 
   site: {
