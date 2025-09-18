@@ -74,7 +74,7 @@ onBeforeUnmount(() => {
       <div class="hero__image-container position-relative">
         <div class="hero__cta position-absolute">
           <NuxtLink to="/idopontfoglalas" class="hero__cta-button"
-            >INGYENES AJÁNLAT KÉRÉS</NuxtLink
+            >AJÁNLATKÉRÉS</NuxtLink
           >
         </div>
         <NuxtImg
